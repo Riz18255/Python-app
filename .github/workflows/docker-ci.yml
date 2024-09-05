@@ -28,13 +28,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 4: Build the Docker image
-      - name: Build Docker image
-        run: docker build -t yourdockerhubusername/flask-app .
-
-     
-
-      # Step 6: Push the Docker image to Docker Hub, only if tests pass
-      - name: Push Docker image
-        if: success()
-        run: docker push yourdockerhubusername/flask-app
+      # Step 4: Build and push to Docker Hub
+       - name: Build and push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: riz1825/flask-app:latest
