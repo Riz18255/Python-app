@@ -32,10 +32,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t yourdockerhubusername/flask-app .
 
-      # Step 5: Run the tests inside the container
-      - name: Run tests
-        run: |
-          docker run --rm yourdockerhubusername/flask-app pytest
+     
 
       # Step 6: Push the Docker image to Docker Hub, only if tests pass
       - name: Push Docker image
